@@ -1,14 +1,16 @@
-<ion-view view-title="Inicio">
+<ion-view view-title="Inicio" class="ion-view">
   <ion-content class="padding">
     <a href="" ng-click="clickedTest()">TEST</a>
     <p ng-if="showMsg">este msj esta oculto</p>
-    <div class="card">
-    	<div class="item item-divider">
-    		Clima en medellín
-    	</div>
-    	<div class="item item-text-wrap">
-    		algo mas...
-    	</div>
+
+	<div class="item item-thumbnail-left" ng-if="showWeather">
+		<img ng-src="{{getCurrentWeatherIconUrl()}}" alt="localWeather.description" height="52" width="52"/>
+		<h2>{{localWeather.main}}</h2>
+		<h3>{{localWeather.description}}</h3>
+		<h6 style="padding: 3px;"></h6>
+		<h3><span class="icon ion-thermometer"></span>{{localTemp.temp}} °C</h3>
+		<h4>min: <strong>{{localTemp.temp_min}}</strong> - max: <strong>{{localTemp.temp_max}}</strong> °C</h4>
     </div>
+
   </ion-content>
 </ion-view>

@@ -38,7 +38,7 @@ angular.module('testApp',
   .state('tab.home', {
     url: '/home',
     views: {
-      'home': {
+      'tab-home': {
         templateUrl: 'templates/home.html',
         controller: 'HomeCtrl'
       }
@@ -48,7 +48,7 @@ angular.module('testApp',
     .state('tab.login', {
       url: '/login',
       views: {
-        'login':{
+        'tab-login':{
           templateUrl: 'templates/login.html',
           controller: 'LoginCtrl'
         }
@@ -58,7 +58,7 @@ angular.module('testApp',
   .state('tab.settings', {
     url: '/settings',
     views: {
-      'settings': {
+      'tab-settings': {
         templateUrl: 'templates/settings.html',
         controller: 'SettingsCtrl'
       }
@@ -66,7 +66,7 @@ angular.module('testApp',
   });
 
   // if none of the above states are matched, use this as the fallback
-  $urlRouterProvider.otherwise('/home');
+  $urlRouterProvider.otherwise('/tab/home');
 
 })
 
