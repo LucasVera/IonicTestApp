@@ -8,5 +8,15 @@
 }
 
 .light-background{
-	background-color: lightslategrey;
+	background-color: #c6d6ef;
 }
+
+.dark-background{
+	background-color: slategrey;
+}
+
+.light-text > span, i, p, h1, h2, h3, h4, h5, h6, a{
+	color: #c6d6ef;
+}
+
+

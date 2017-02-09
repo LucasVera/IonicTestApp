@@ -1,16 +1,25 @@
 <ion-view view-title="Inicio" class="ion-view">
   <ion-content class="padding">
-    <a href="" ng-click="clickedTest()">TEST</a>
-    <p ng-if="showMsg">este msj esta oculto</p>
-
-	<div class="item item-thumbnail-left" ng-if="showWeather">
-		<img ng-src="{{getCurrentWeatherIconUrl()}}" alt="localWeather.description" height="52" width="52"/>
-		<h2>{{localWeather.main}}</h2>
-		<h3>{{localWeather.description}}</h3>
-		<h6 style="padding: 3px;"></h6>
-		<h3><span class="icon ion-thermometer"></span>{{localTemp.temp}} °C</h3>
-		<h4>min: <strong>{{localTemp.temp_min}}</strong> - max: <strong>{{localTemp.temp_max}}</strong> °C</h4>
+    <button href="" ng-click="clickedTest()" class="button button-block button-dark">{{!showWeather ? 'Mostrar clima' : 'Ocultar clima'}}</button>
+    <div ng-if="showWeather">
+    	<div class="item item-divider">
+    		Clima en Medellín
+    	</div>
+		<div class="item item-thumbnail-left">
+			<img ng-src="{{getCurrentWeatherIconUrl()}}" alt="localWeather.description"/>
+			<h2>{{localWeather.main}}</h2>
+			<h3>{{localWeather.description}}</h3>
+			<div style="padding:1px;"></div>
+			<div class="row">
+				<div class="col col-75">
+					<h3><span class="icon ion-thermometer"></span>{{localTemp.temp}} °C</h3>
+					<h4>min: <strong>{{localTemp.temp_min}} °C</strong> - max: <strong>{{localTemp.temp_max}} °C</strong></h4>
+				</div>
+				<div class="col">
+					<button class="button button-small button-light" style="color:#292d33; padd" href="">Ver más...</button>
+				</div>
+			</div>
+	    </div>
     </div>
-
   </ion-content>
 </ion-view>

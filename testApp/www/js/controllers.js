@@ -3,6 +3,7 @@ angular.module('testApp')
 .controller('HomeCtrl', ['$scope', 'weatherService', function($scope, weatherService) {
   $scope.showMsg = false;
   $scope.showWeather = false;
+  
   $scope.clickedTest = function(){
     $scope.showMsg = !$scope.showMsg;
     $scope.showWeather = !$scope.showWeather;
