@@ -19,4 +19,20 @@
 	color: #c6d6ef;
 }
 
+.no-pad{
+	padding: 0px;
+}
+
+.no-marg{
+	margin: 0px;
+}
+
+.pull-right{
+	float:right;
+	display:inline;
+}
+
+.top{
+	top:0px;
+}
 

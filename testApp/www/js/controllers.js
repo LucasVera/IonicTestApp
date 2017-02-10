@@ -1,13 +1,55 @@
 angular.module('testApp')
 
-.controller('HomeCtrl', ['$scope', 'weatherService', function($scope, weatherService) {
-  $scope.showMsg = false;
-  $scope.showWeather = false;
+.controller('HomeCtrl', ['$scope', 'weatherService', '$ionicModal', function($scope, weatherService, $ionicModal) {
   
-  $scope.clickedTest = function(){
-    $scope.showMsg = !$scope.showMsg;
-    $scope.showWeather = !$scope.showWeather;
-    $scope.getWeatherInfo(3674962);
+  $scope.initCtrl = function(){
+  	try{
+		$scope.showMsg = false;
+		$scope.showWeather = false;
+
+		$scope.modalInit();
+
+	  	$scope.openModal = function(){
+	  		$scope.modal.show();
+	  	}
+	  	$scope.closeModal = function(){
+	  		$scope.modal.hide();
+	  	}
+	  	console.log($scope.showMsg ? "true" : "false");
+  	} catch(ex){
+  		console.log(ex.message);
+  	}
+  }
+
+  	$scope.$on('$destroy', function(){
+  		$scope.modal.remove();
+  	});
+	$scope.$on('modal.hidden', function(){
+		// do something
+	});
+	$scope.$on('modal.removed', function(){
+		// do something...
+	})
+
+  $scope.modalInit = function(){
+  	$ionicModal.fromTemplateUrl('/templates/modals/weatherInfo.html',
+	  	{
+	  		scope: $scope,
+	  		animation: 'slide-in-up'
+	  	}).then(function(modal){
+	  		$scope.modal = modal;
+	  	});
+  }
+  
+  $scope.showWeatherDetails = function(){
+  	$scope.openModal();
+  }
+
+  $scope.queryAndShowWeather = function(){
+  	$scope.showWeather = !$scope.showWeather;
+  	if ($scope.showWeather == true){
+		$scope.getWeatherInfo();
+  	}
   }
 
   $scope.getWeatherInfo = function(cityId){
@@ -38,12 +80,14 @@ angular.module('testApp')
   }
 
   $scope.getCurrentWeatherIconUrl = function(){
-  	if ($scope.localWeather.icon == null || $scope.localWeather.icon == undefined || $scope.localWeather == {}){
+  	if ($scope.localWeather == undefined || $scope.localWeather == null || $scope.localWeather == {}){
   		return "http://host.coxmediagroup.com/wpb/editorial/insuranceexplorer/icons/icon0.png";
   	}
 
   	return "http://openweathermap.org/img/w/" + $scope.localWeather.icon + ".png";
   }
+
+  $scope.initCtrl();
 
 }])
 
