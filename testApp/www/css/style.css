@@ -6,17 +6,39 @@
 	padding-right: 5px;
 	padding-bottom: 3px;
 }
-
+/*
 .light-background{
 	background-color: #c6d6ef;
 }
 
 .dark-background{
-	background-color: slategrey;
+	background-color: #32363d;
 }
 
-.light-text > span, i, p, h1, h2, h3, h4, h5, h6, a{
-	color: #c6d6ef;
+.light-text{
+	color: #e2ecff;
+}
+
+.light-text > p, span, label, i, h1, h2, h3 ,h4, h5, h6{
+	color: #e2ecff;
+}
+
+.dark-text{
+	color: #32363d;
+}
+
+.dark-text > p, span, label, i, h1, h2, h3 ,h4, h5, h6{
+	color: #32363d;
+}
+*/
+
+.dark{
+	/* dark text*/
+	color: #2c3038; 
+}
+
+.light-bg{
+	background-color: #c6d6ef;
 }
 
 .no-pad{
@@ -25,6 +47,18 @@
 
 .no-marg{
 	margin: 0px;
+}
+
+.sm-pad{
+	padding:6px;
+}
+
+.md-pad{
+	padding:15px;
+}
+
+.bg-pad{
+	padding:30px;
 }
 
 .pull-right{
@@ -36,3 +70,68 @@
 	top:0px;
 }
 
+.bottom{
+	bottom: 0px;
+}
+
+.calm-bg{
+	background-color: #5bc0de;
+	color:white;
+}
+
+.assertive-bg{
+	background-color: #ee5f5b;
+	color: white;
+}
+
+.dark-bg{
+	background-color: #444444;
+	color: white;
+}
+
+.balanced-bg{
+	background-color: #33cd5f;
+	color: white;
+}
+
+.energized-bg{
+	background-color: #ffc900;
+	color: white;
+}
+
+.positive-bg{
+	background-color: #387ef5;
+	color: white;
+}
+
+.pad-big{
+	padding: 20px;
+}
+
+.pad-xs{
+	padding: 3px;
+}
+
+.pad-sm{
+	padding:6px;
+}
+
+.item-radio input:checked + .radio-content .item-content {
+	/* style the item content when its checked */
+	background: grey;
+}
+
+.popover {
+  height: auto !important;
+}
+.popover ion-header-bar {
+  position: relative;
+}
+.popover ion-content {
+  top: 0;
+  position: relative;
+}
+.popover-inner-content {
+  width: 100%;
+  /*padding: 5px 20px;*/
+}

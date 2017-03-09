@@ -1,11 +1,31 @@
-<script id="templates/modals/weatherInfo.html" type="text/ng-template">
-	<ion-modal-view>
-		<ion-header-bar>
-			<h1 class="title">Información del clima</h1>
-		</ion-header-bar>
-		<ion-content>
-			<h2>{{localWeather.main}}</h2>
-			<h3>{{localWeather.description}}</h3>
-		</ion-content>
-	</ion-modal-view>
-</script>
+<ion-modal-view class="dark-bg">
+	<ion-header-bar>
+		<h1 class="title" style="color:#414b5b;">Detalles del clima</h1>
+		<div class="buttons">
+			<button class="button button-clear button-dark" ng-click="closeWeatherDetailsModal()">
+				<span class="icon ion-close-round" style="font-size:5px;"></span>
+			</button>
+		</div>
+	</ion-header-bar>
+	<ion-content>
+
+		<div class="list">
+
+			<div class="item">
+				<img ng-src="{{getCurrentWeatherIconUrl()}}" alt="localWeather.description"/>
+				<h2>{{localWeather.main}}</h2>
+				<h3>{{localWeather.description}}</h3>
+				<div style="padding:2px;"></div>
+				<h3><span class="icon ion-thermometer"></span>{{localTemp.temp}} {{getCurrentTemperatureSign()}}</h3>
+				<h4>
+	                min: <strong>{{localTemp.temp_min}} {{getCurrentTemperatureSign()}}</strong> - max: <strong>{{localTemp.temp_max}} {{getCurrentTemperatureSign()}}</strong>
+	            </h4>
+			</div>
+			<div class="item">
+				
+			</div>
+
+		</div>
+
+	</ion-content>
+</ion-modal-view>

@@ -1,0 +1,45 @@
+<ion-modal-view class="dark-bg">
+	<ion-header-bar>
+		<h1 class="title" style="color:#414b5b;">Crear nueva cuenta</h1>
+		<div class="buttons">
+			<button class="button button-clear button-dark" ng-click="closeNewAccountModal()">
+				<span class="icon ion-close-round dark-text" style="font-size:5px;"></span>
+			</button>
+		</div>
+	</ion-header-bar>
+	<ion-content>
+		<form ng-submit="doCreateAccount()">
+			<div class="list">
+				<label class="item item-input">
+					<span class="input-label" style="color:grey;">Email</span>
+					<input type="email" ng-model="newAccount.email">
+				</label>
+				<label class="item item-input">
+					<span class="input-label" style="color:grey;">Contraseña</span>
+					<input type="password" ng-model="newAccount.password">
+				</label>
+				<label class="item item-input">
+					<span class="input-label" style="color:grey;">Confirme contraseña</span>
+					<input type="password" ng-model="newAccount.confirmPassword">
+				</label>
+				<label class="item item-input">
+					<span class="input-label" style="color:grey;">Nombre</span>
+					<input type="text" ng-model="newAccount.name">
+				</label>
+				<label class="item">
+					<button class="button button-block button-positive" type="submit">
+						Crear cuenta
+					</button>
+				</label>
+			</div>
+		</form>
+
+		<div class="card" ng-if="showNewAccountMsg">
+			<div class="item item-text-wrap pad-big" ng-class="newAccountClass">
+				{{newAccountMsg}}
+				<button class="button button-clear button-small pull-right no-pad no-marg" ng-click="hideNewAccountMsg()"><span style="color:white;" class="icon ion-close"></span></button>
+			</div>
+		</div>
+
+	</ion-content>
+</ion-modal-view>

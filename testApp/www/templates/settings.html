@@ -1,5 +1,22 @@
 <ion-view view-title="Settings">
   <ion-content>
-  	<p>Settings page!</p>
+  	<div class="list light-text">
+  		<div class="item item-divider">
+  			Unidades para el clima
+  		</div>
+  		<ion-list ng-init="weatherUnits = 'metric'" style="color:white;">
+  			<ion-radio ng-click="changeWeatherUnit('metric')"><span>Sistema métrico</span></ion-radio>
+  			<ion-radio ng-click="changeWeatherUnit('imperial')"><span>Sistema imperial</span></ion-radio>
+  			<ion-radio ng-click="changeWeatherUnit('standard')"><span>Sistema Standard</span></ion-radio>
+  		</ion-list>
+
+  		<p style="padding: 5px;""></p>
+
+  		<button class="button button-balanced button-small pull-right">
+	  		<span class="icon ion-checkmark-round"></span>
+	  		Guardar
+  		</button>
+
+  	</div>
   </ion-content>
 </ion-view>

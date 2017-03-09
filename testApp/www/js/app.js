@@ -5,6 +5,9 @@
 // the 2nd parameter is an array of 'requires'
 // 'starter.services' is found in services.js
 // 'starter.controllers' is found in controllers.js
+
+var APP_ID = 'f8b7fb8f'; // <---- IONIC APP ID... VER IONIC DASHBOARD apps.ionic.io
+
 angular.module('testApp',
   ['ionic',
    'ionic.cloud',
@@ -16,7 +19,7 @@ angular.module('testApp',
 
   $ionicCloudProvider.init({
     'core':{
-      'app_id': 'APP_ID'
+      'app_id': APP_ID
     }
   });
 

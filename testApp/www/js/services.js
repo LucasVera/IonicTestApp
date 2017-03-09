@@ -1,15 +1,61 @@
 angular.module('testApp')
 .constant('baseURL', 'http://api.openweathermap.org/data/2.5/')
 .constant('apiKey', '1d4689d66facb710550044dbdfb307f1')
-.service('weatherService', ['$resource', 'baseURL', 'apiKey', function($resource, baseURL, apiKey){
+.constant('app_id', 'f8b7fb8f')
+.service('weatherService', ['$resource', 'baseURL', 'apiKey', '$rootScope', function($resource, baseURL, apiKey, $rootScope){
   this.getWeatherInfoByCityId = function(cityId){
     if (cityId == null || cityId == undefined || cityId == 0 || cityId == {})
     {
       cityId = 3674962; //<--- Medellin,CO by default
     }
 
-    return $resource(baseURL+'weather?id=' + cityId + '&APPID=' + apiKey + '&units=metric&lang=es');
+    if ($rootScope.weatherUnits == undefined || $rootScope.weatherUnits == null || $rootScope.weatherUnits.trim() == ''){
+    	$rootScope.weatherUnits = 'metric';
+    }
+
+    console.log($rootScope.weatherUnits);
+    return $resource(baseURL+'weather?id=' + cityId + '&APPID=' + apiKey 
+    	+ '&units='+ $rootScope.weatherUnits + '&lang=es');
   }
+}])
+
+
+.service('loginService', ['$resource', '$ionicAuth', '$ionicUser', 'app_id', '$timeout'
+			, function($resource, $ionicAuth, $ionicUser, app_id, $timeout){
+
+	this.login = function(email, password){
+		if (email == undefined || email == null || email == ""){
+			throw 'El correo electrónico es requerido.';
+		}
+		if (password == undefined || password == null || password == ""){
+			throw 'La contraseña es requerida.';
+		}
+
+		loginData = {'email': email, 'password': password};
+
+		return $ionicAuth.login('basic', loginData);
+
+	}
+
+	this.logout = function(){
+		$ionicAuth.logout();
+	}
+
+	this.signup = function(email, password, name){
+		if (email == undefined || email == null || email == ""){
+			throw 'El correo electrónico es requerido.';
+		}
+		if (password == undefined || password == null || password == ""){
+			throw 'La contraseña es requerida.';
+		}
+
+		return $ionicAuth.signup({'app_id': app_id, 'email': email, 'password': password, 'name': name});
+	}
+
+	this.getUser = function(){
+		return $ionicUser.details;
+	}
+
 }])
 
 ;
